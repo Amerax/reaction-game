@@ -87,3 +87,40 @@ void loop() {
     }
   }
 }
+
+void startScreen() {
+    digitalWrite(LED, LOW);
+    noTone(BUZZER);
+
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("Reaction Game");
+    display.println();
+    display.println("Press a button");
+    display.println("to start");
+    display.display();
+  }
+
+  void playerWon(int player, unsigned long reaction) {
+    digitalWrite(LED, LOW);
+    tone(BUZZER, 2000, 250);
+
+    display.clearDisplay();
+    display.setCursor(0, 0);
+
+    if (player == 1)
+      display.println("Player 1 Wins!");
+    else
+      display.println("Player 2 Wins!");
+
+    display.print("Time: ");
+    display.print(reaction);
+    display.println(" ms");
+
+    display.display();
+
+    delay(3000);
+
+    startScreen();
+  }
+
