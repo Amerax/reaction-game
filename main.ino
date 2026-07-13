@@ -124,3 +124,29 @@ void startScreen() {
     startScreen();
   }
 
+// this is for when the player presses button before light lights up
+ void falseStart(int player) {
+    digitalWrite(LED, LOW);
+
+    for (int i = 0; i < 3; i++) {
+      tone(BUZZER, 300, 150);
+      delay(200);
+    }
+
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("False Start!");
+    display.println();
+
+    if (player == 1)
+      display.println("Player 2 Wins!");
+    else
+      display.println("Player 1 Wins!");
+
+    display.display();
+
+    delay(3000);
+
+    startScreen();
+  }
+
